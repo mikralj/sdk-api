@@ -111,6 +111,7 @@ To help improve system performance, applications should use the <b>SetThreadInfo
 
 Memory priority helps to determine how long pages remain in the <a href="https://docs.microsoft.com/windows/desktop/Memory/working-set">working set</a> of a process before they are trimmed. A thread's memory priority determines the minimum priority of the physical pages that are added to the process working set by that thread. When the memory manager trims the working set, it trims lower priority pages before higher priority pages. This improves overall system performance because higher priority pages are less likely to be trimmed from the working set and then trigger a page fault when they are accessed again. 
 
+Power throttling helps balance out performance and power efficiency. It allows developer to reduce applications power usage when user doesn't require best performance. A thread can control execution speed by opting in or out of throttling it. When opted in system will try to schedule the thread to run in more power efficient way. For example system might cap CPU frequency or run the thread on more power efficient cores. It's suggested that application opts into power throttling when it is not contributing to immediate user experience. This allows user to get a better battery life without sacrificing performance of applications that are currently in use. If application doesn't take explicit control system will use internal heuristics to balance out performance and power efficiency.
 
 #### Examples
 
